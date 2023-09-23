@@ -34,6 +34,12 @@ export const OpenAIStream = async (
   if (OPENAI_API_TYPE === 'azure') {
     url = `${OPENAI_API_HOST}/openai/deployments/${AZURE_DEPLOYMENT_ID}/chat/completions?api-version=${OPENAI_API_VERSION}`;
   }
+  const timeout = 300000;
+  const controller = new AbortController();
+  const signal = controller.signal;
+  const timeoutId = setTimeout(() => {
+    controller.abort();
+  }, timeout);
   const res = await fetch(url, {
     headers: {
       'Content-Type': 'application/json',
@@ -47,6 +53,7 @@ export const OpenAIStream = async (
         'OpenAI-Organization': OPENAI_ORGANIZATION,
       }),
     },
+    signal,
     method: 'POST',
     body: JSON.stringify({
       ...(OPENAI_API_TYPE === 'openai' && {model: model.id}),
@@ -62,7 +69,7 @@ export const OpenAIStream = async (
       stream: true,
     }),
   });
-
+  clearTimeout(timeoutId);
   const encoder = new TextEncoder();
   const decoder = new TextDecoder();
 
