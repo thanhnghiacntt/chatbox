@@ -14,7 +14,7 @@ docker run -e OPENAI_API_KEY=xxxxxxxx -p 3000:3000 chatgpt-ui
 Pull từ github:
 
 ```
-docker run -e OPENAI_API_KEY=xxxxxxxx -p 3000:3000 ghcr.io/thanhnghiacntt/chatbox:main
+docker run -e OPENAI_API_KEY=xxxxxxxx -p 3000:3000 github.io/thanhnghiacntt/chatbox:main
 ```
 
 ## Running Locally
