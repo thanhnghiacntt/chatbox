@@ -1,50 +1,17 @@
 # Chatbox
 
-## News
-
-Chatbox 2.0 is out as an updated, hosted product!
-
-Check out [Takeoff Chat](https://www.takeoffchat.com/).
-
-Open source version coming soon!
-
-## About
-
-Chatbox is an open source chat UI for AI models.
-
-See a [demo](https://twitter.com/mckaywrigley/status/1640380021423603713?s=46&t=AowqkodyK6B4JccSOxSPew).
-
-![Chatbox](./public/screenshots/screenshot-0402023.jpg)
-
-## Updates
-
-Chatbox will be updated over time.
-
-Expect frequent improvements.
-
-**Next up:**
-
-- [ ] Sharing
-- [ ] "Bots"
-
 ## Deploy
-
-**Vercel**
-
-Host your own live version of Chatbox with Vercel.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fmckaywrigley%2Fchatbot-ui)
 
 **Docker**
 
-Build locally:
+Build từ máy local:
 
 ```shell
 docker build -t chatgpt-ui .
 docker run -e OPENAI_API_KEY=xxxxxxxx -p 3000:3000 chatgpt-ui
 ```
 
-Pull from ghcr:
+Pull từ github:
 
 ```
 docker run -e OPENAI_API_KEY=xxxxxxxx -p 3000:3000 ghcr.io/thanhnghiacntt/chatbox:main
@@ -52,64 +19,58 @@ docker run -e OPENAI_API_KEY=xxxxxxxx -p 3000:3000 ghcr.io/thanhnghiacntt/chatbo
 
 ## Running Locally
 
-**1. Clone Repo**
+**1. Tải repository về**
 
 ```bash
 git clone https://github.com/thanhnghiacntt/chatbox.git
 ```
 
-**2. Install Dependencies**
+**2. Cài đặt các Dependencies**
 
 ```bash
 npm i
 ```
 
-**3. Provide OpenAI API Key**
+**3. Cung cấp OpenAI API Key**
 
-Create a .env.local file in the root of the repo with your OpenAI API Key:
+Tạo một file ở máy local .env.local để chứa nội dung biến môi trường với OpenAI API key:
 
 ```bash
 OPENAI_API_KEY=YOUR_KEY
 ```
 
-> You can set `OPENAI_API_HOST` where access to the official OpenAI host is restricted or unavailable, allowing users to configure an alternative host for their specific needs.
-
-> Additionally, if you have multiple OpenAI Organizations, you can set `OPENAI_ORGANIZATION` to specify one.
-
-**4. Run App**
+**4. Run Ứng dụng**
 
 ```bash
 npm run dev
 ```
 
-**5. Use It**
+**5. Truy cập**
 
-You should be able to start chatting.
+Bạn sẽ có thể bắt đầu trò chuyện.
 
-## Configuration
+## Cấu hình biến môi trường
 
-When deploying the application, the following environment variables can be set:
+Khi chạy ứng dụng bạn có thể sét những biến môi trường sau:
 
-| Environment Variable              | Default value                  | Description                                                                                                                               |
+| Tên biến môi trường              | Giá trị mặc đinh                 | Mô tả                                                                                                                               |
 | --------------------------------- | ------------------------------ | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| OPENAI_API_KEY                    |                                | The default API key used for authentication with OpenAI                                                                                   |
-| OPENAI_API_HOST                   | `https://api.openai.com`       | The base url, for Azure use `https://<endpoint>.openai.azure.com`                                                                         |
-| OPENAI_API_TYPE                   | `openai`                       | The API type, options are `openai` or `azure`                                                                                             |
-| OPENAI_API_VERSION                | `2023-03-15-preview`           | Only applicable for Azure OpenAI                                                                                                          |
-| AZURE_DEPLOYMENT_ID               |                                | Needed when Azure OpenAI, Ref [Azure OpenAI API](https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/reference#completions) |
-| OPENAI_ORGANIZATION               |                                | Your OpenAI organization ID                                                                                                               |
-| DEFAULT_MODEL                     | `gpt-3.5-turbo`                | The default model to use on new conversations, for Azure use `gpt-35-turbo`                                                               |
-| NEXT_PUBLIC_DEFAULT_SYSTEM_PROMPT | [see here](utils/app/const.ts) | The default system prompt to use on new conversations                                                                                     |
-| NEXT_PUBLIC_DEFAULT_TEMPERATURE   | 1                              | The default temperature to use on new conversations                                                                                       |
-| GOOGLE_API_KEY                    |                                | See [Custom Search JSON API documentation][GCSE]                                                                                          |
-| GOOGLE_CSE_ID                     |                                | See [Custom Search JSON API documentation][GCSE]                                                                                          |
+| OPENAI_API_KEY                    |                                | Cái này là key tạo từ OpenAI, không thể thiếu                                                                                    |
+| OPENAI_API_HOST                   | `https://api.openai.com`       | TUrl cơ bản để sử dụng Azure`https://<endpoint>.openai.azure.com`                                                                         |
+| OPENAI_API_TYPE                   | `openai`                       | Loại api tùy chọn là `openai` hoặc `azure`                                                                                             |
+| OPENAI_API_VERSION                | `2023-03-15-preview`           | Chỉ áp dụng cho Azure OpenAI                                                                                                          |
+| AZURE_DEPLOYMENT_ID               |                                | Cần thiết khi Azure OpenAI, Ref[Azure OpenAI API](https://learn.microsoft.com/zh-cn/azure/cognitive-services/openai/reference#completions) |
+| OPENAI_ORGANIZATION               |                                | Tổ chức OpenAI của bạn                                                                                                               |
+| DEFAULT_MODEL                     | `gpt-3.5-turbo`                | Mô hình mặc định để sử dụng cho các cuộc hội thoại mới, dành cho việc sử dụng Azure `gpt-35-turbo`                                                               |
+| NEXT_PUBLIC_DEFAULT_SYSTEM_PROMPT | [see here](utils/app/const.ts) | Lời nhắc hệ thống mặc định để sử dụng trên thiết bị mới conversations                                                                                     |
+| NEXT_PUBLIC_DEFAULT_TEMPERATURE   | 1                              | Nhiệt độ mặc định để sử dụng trên máy mới conversations                                                                                       |
+| GOOGLE_API_KEY                    |                                | Click [Link tài liệu JSON API][GCSE]                                                                                          |
+| GOOGLE_CSE_ID                     |                                | Click [Link tài liệu JSON API][GCSE]                                                                                          |
 
-If you do not provide an OpenAI API key with `OPENAI_API_KEY`, users will have to provide their own key.
-
-If you don't have an OpenAI API key, you can get one [here](https://platform.openai.com/account/api-keys).
+Nếu bạn không có key OpenAI, bạn có thể truy cập vào link đây [here](https://platform.openai.com/account/api-keys).
 
 ## Contact
 
-If you have any questions, feel free to reach out to Mckay on [Twitter](https://twitter.com/mckaywrigley).
+Nếu có bất kỳ câu hỏi nào có thể liên hệ [Facebook](https://www.facebook.com/nguyenthanhnghia.cntt).
 
 [GCSE]: https://developers.google.com/custom-search/v1/overview
